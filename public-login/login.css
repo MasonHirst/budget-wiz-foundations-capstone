@@ -23,3 +23,12 @@ label, input {
     display: block;
     width: 200px;
 }
+
+
+.no-display {
+    display: none;
+}
+
+.display {
+    display: block;
+}

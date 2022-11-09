@@ -15,9 +15,12 @@ afterAll(async () => {
 
 
 test('4 additional console logs should appear in chrome when create Account criteria in met', async () => {
+    await driver.sleep(2000)
+
+    await driver.findElement(By.id('new-user-btn')).click()
     await driver.sleep(300)
 
-    await driver.findElement(By.id('email-create-input')).sendKeys('mason@gmail.com')
+    await driver.findElement(By.id('email-create-input')).sendKeys(Math.floor(Math.random() * 10000000))
     await driver.sleep(300)
 
     await driver.findElement(By.id('createAcc-names-input')).sendKeys('Mason and Malena')
@@ -27,4 +30,7 @@ test('4 additional console logs should appear in chrome when create Account crit
     await driver.sleep(300)
 
     await driver.findElement(By.id('password-create-input2')).sendKeys('password')
+
+    await driver.findElement(By.id('createAcc-btn')).click()
+    await driver.sleep(1300)
 })

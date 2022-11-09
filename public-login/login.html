@@ -23,12 +23,28 @@
 
     <button id="new-user-btn">New User</button>
 
+    <div id="createAcc-div-parent" class="no-display">
+        <div id="createAcc-div">
+            <form id="createAcc-form">
+                <label for="email">Email</label>
+                <input name="email" id="email-create-input" type="email" placeholder="Enter a valid email">
 
-    <div id="createAcc-div-parent">
-        
-        
+                <label for="names">Name(s)</label>
+                <input name="names" id="createAcc-names-input" type="text" placeholder="Ex: 'Jack and Jill'">
+
+                <label for="password">Password</label>
+                <input name="password" id="password-create-input" type="password" placeholder="At least 6 characters">
+
+                <label for="password2">Re-enter password</label>
+                <input name="password2" id="password-create-input2" type="password" placeholder="Passwords must match">
+            </form>
+
+            <div id="createAcc-btns-div">
+                <button id="createAcc-close-btn">Cancel</button>
+                <button id="createAcc-btn">Create Account</button>
+            </div>
+        </div>
     </div>
-
 
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
