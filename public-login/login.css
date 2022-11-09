@@ -1,0 +1,25 @@
+/* body {
+    background-color: aqua;
+}
+ */
+
+#createAcc-div {
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 400px;
+    margin-left: 40%;
+    margin-top: 200px;
+}
+
+#createAcc-form {
+    margin-bottom: 50px;
+}
+
+label, input {
+    display: block;
+    width: 200px;
+}

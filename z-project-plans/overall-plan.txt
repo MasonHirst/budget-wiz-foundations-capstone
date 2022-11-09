@@ -1,0 +1,16 @@
+I want to build a custom budgeting website for my wife and I to use with our monthly budget meetings.
+
+The app will have an account based system, so that we can login and see our own budgets and transactions. 
+After you have created an account and logged in, the app will take you to another html page, the home page.
+The home page will have quick views of your total budgets, spending, income vs outgo, etc. It will also 
+have quick forms to submit an expense, create a new budget, and change existing budgets.
+
+
+MVP: Login feature, create budget feature (set budget categories and amounts), add expense feature (select 
+a category and submit amount spent), and edit existing budget category limits.
+
+
+
+Features I want to add if I have time:
+    I want to hash passwords when they are inputted so that passwords are never stored in the system.
+    I want to have a selenium chromedriver test that tests my front end for me when I make changes
