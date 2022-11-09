@@ -36,8 +36,6 @@ module.exports = {
     },
 
     createAcc: (req, res) => {
-        res.send('hppt post request was received in server.js and controllers.js')
-
         let { email, name, password } = req.body
 
         sequelize.query(`
