@@ -7,39 +7,38 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE USERS (
   acc_id SERIAL PRIMARY KEY,
-  acc_name VARCHAR(25),
-  email VARCHAR(255) UNIQUE,
-  password VARCHAR(500)
+  acc_name VARCHAR(25) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(500) NOT NULL
   );
 
   CREATE TABLE budgets (
   budget_id SERIAL PRIMARY KEY,
-  name_1 VARCHAR(25),
-  user_id int,
-  month_name VARCHAR(255),
+  name VARCHAR(255) UNIQUE NOT NULL,
+  user_id int NOT NULL,
   FOREIGN KEY(user_id) REFERENCES users(acc_id)
   );
 
   CREATE TABLE budget_categories (
   category_id SERIAL PRIMARY KEY,
-  budget_id int REFERENCES budgets(budget_id),
-  category_name VARCHAR(255),
-  category_budget DECIMAL
+  budget_id int REFERENCES budgets(budget_id) NOT NULL,
+  category_name VARCHAR(255) NOT NULL,
+  category_budget DECIMAL NOT NULL
   );
 
   CREATE TABLE expenses (
   expenses_id SERIAL PRIMARY KEY,
   category_id int REFERENCES budget_categories(category_id),
-  name VARCHAR(255),
-  amount DECIMAL,
+  name VARCHAR(255) NOT NULL,
+  amount DECIMAL NOT NULL,
   note VARCHAR(500)
   );
 
   CREATE TABLE incomes (
   incomes_id SERIAL PRIMARY KEY,
-  category_id int REFERENCES budget_categories(category_id),
-  name VARCHAR(255),
-  amount DECIMAL,
+  category_id int REFERENCES budget_categories(category_id) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  amount DECIMAL NOT NULL,
   note VARCHAR(500)
   );
 
@@ -48,5 +47,31 @@ INSERT INTO users (acc_name, email, password)
     VALUES ('Jack and Jill', 'jack@gmail.com', 'passw0rd'),
     ('Bob and Mary', 'bob@yahoo.com', 'ilovemary');
 
+INSERT INTO budgets (name, user_id)
+    VALUES ('Nov 2022 budget', 1),
+    ('Jack and Jill december budget', 1),
+    ('Bob and Mary january budget', 2),
+    ('Bob secret february budget', 2);
+
+INSERT INTO budget_categories (budget_id, category_name, category_budget)
+    VALUES (1, 'groceries', 200.57),
+    (1, 'rent', 850),
+    (2, 'food', 410.25),
+    (2, 'gas', 89.00),
+    (3, 'eating out', 60.01),
+    (3, 'traveling', 550),
+    (4, 'food', 85),
+    (4, 'costumes', 150);
+
+INSERT INTO incomes (category_id, name, amount, note)
+    VALUES (1, 'bought milk', 6.57, ''),
+    (1, 'cookies', 12.00, 'need cookies with the milk'),
+    (2, 'december rent', 500, 'paid rent for december'),
+    (3, 'groceries', 37, 'need me some ice cream'),
+    (4, 'gas', 67.57, 'gotta fill er up'),
+    (5, 'mcdonalds', 55, 'i love big macs on january 21st'),
+    (6, 'went to greece', 1200.57, 'Plane tickets to greece'),
+    (7, 'got bread for the party', 21, ''),
+    (8, 'batman costume', 34, 'gotta look cool');
 
 SELECT * FROM users

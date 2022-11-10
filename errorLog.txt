@@ -7,9 +7,17 @@ Actually it says every input is already taken.
 
 
 My method for searching the database for an email uses a for loop to get rid of the ':'. There should be a better way
+-----------solved------------
 
 
 How do I keep the user acc_id in the system while a user is logged in?
+Store the database response as an object in a variable on the JS file, so you can keep accessing it while logged in
+-----------solved---------
 
 
+security issues with the front end? Someone could edit the front end JS file and potentially act like another user
+if they know that user's acc_id
+
+
+if a user has an apostrophe (') in their input, it could mess up the database query
 

@@ -27,6 +27,10 @@ module.exports = {
         res.sendFile(path.join(__dirname, '../public-login/login.js'))
     },
 
+    loggedJS: (req, res) => {
+        res.sendFile(path.join(__dirname, '../public-login/logged-in.js'))
+    },
+
     resetCSS: (req, res) => {
         res.sendFile(path.join(__dirname, '../reset.css'))
     },

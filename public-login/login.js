@@ -9,12 +9,8 @@ let createAccDiv = document.querySelector('#createAcc-div-parent')
 let loginEmailInput = document.querySelector('#email-login-input')
 let loginPasswordInput = document.querySelector('#password-login-input')
 let loginSubmit = document.querySelector('#login-form')
+let loggedInDiv = document.querySelector('#logged-in-page')
 
-
-
-// createAccEmailInput.addEventListener('focus', (event) => {
-//     event.target.style.background = 'aqua'
-// })
 
 let emailAvailable = false
 // This event listener fires a function when focus is taken off the email input box, and checks the database
@@ -40,7 +36,8 @@ createAccEmailInput.addEventListener('blur', (event) => {
 })
 
 
-
+// This function takes the inputs of the login form, and checks the database to see if they match.
+// If they match, it hides the login and create account forms, and brings up the account page
 function login(event) {
     event.preventDefault()
 
@@ -53,6 +50,8 @@ function login(event) {
             createAccDiv.classList.remove('display')
             createAccDiv.classList.add('no-display')
             NewUserBtn.classList.add('no-display')
+
+            loggedInDiv.classList.remove('no-display')
             
         } else {
             console.log('login credentials do not match database')
@@ -64,6 +63,7 @@ function login(event) {
     })
 }
 loginSubmit.addEventListener('submit', login)
+
 
 
 // This function uses if statements to check each input of the createAcc form. If the passwords 

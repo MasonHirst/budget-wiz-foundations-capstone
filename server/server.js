@@ -10,12 +10,13 @@ app.use(cors())
 // End of setup lines
 
 
-const { loginHTML, loginCSS, loginJS, resetCSS, getAllBudgets, createAcc, checkEmail, checkLogin } = require('./controllers')
+const { loginHTML, loginCSS, loginJS, loggedJS, resetCSS, getAllBudgets, createAcc, checkEmail, checkLogin } = require('./controllers')
 
 app.get('/', loginHTML)
 app.get('/resetcss', resetCSS)
 app.get('/css', loginCSS)
 app.get('/js', loginJS)
+app.get('/js2', loggedJS)
 
 
 app.get('/allbudgets', getAllBudgets)

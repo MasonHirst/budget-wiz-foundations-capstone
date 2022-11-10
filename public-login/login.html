@@ -10,6 +10,10 @@
 </head>
 <body>
     
+    <!-- This first section is the login page. The two forms below (and their buttons) are displayed initially on the webpage.
+    When the user logs in with correct credentials, it hides the forms and their buttons, and displays the correct forms 
+    for the logged in user to interact with -->
+
     <form id="login-form">
         <!-- <label for="email">Email</label> -->
         <input name="email" type="text" id="email-login-input" placeholder="email">
@@ -47,7 +51,30 @@
     </div>
 
 
+
+
+    <!-- The following sections are only displayed when the user logs in successfully -->
+    <div id="logged-in-page" class="no-display">
+        <section id="create-budget-section">
+            <form id="create-budget-form">
+                <label for="name">Enter budget name</label>
+                <input name="name" type="text" id="" placeholder="ex. 'November 2022 budget'">
+
+                <button type="submit" id="create-budget-form-submit">Create Budget</button>
+            </form>
+        </section>
+
+
+
+
+    </div>
+
+
+
+
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js"></script>
+    <script src="/js2"></script>
 </body>
 </html>

@@ -16,3 +16,4 @@ Features I want to add if I have time:
     - I want to have a selenium chromedriver test that tests my front end for me when I make changes
     - I want to have a session so a user stays logged in after refreshes
     - maybe an email checker to see if the inputted email actually exists. This would make testing harder though
+    - add an automatic timestamp to incomes and expenses
