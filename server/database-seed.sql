@@ -47,3 +47,6 @@ CREATE TABLE USERS (
 INSERT INTO users (acc_name, email, password)
     VALUES ('Jack and Jill', 'jack@gmail.com', 'passw0rd'),
     ('Bob and Mary', 'bob@yahoo.com', 'ilovemary');
+
+
+SELECT * FROM users

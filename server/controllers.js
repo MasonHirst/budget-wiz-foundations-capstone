@@ -47,5 +47,30 @@ module.exports = {
             console.log(err)
             res.send(err)
         })
+    },
+
+    checkEmail: (req, res) => {
+        let email = ''
+
+        for (i = 1; i < req.params.id.length; i++) {
+            email += (req.params.id[i])
+        }
+
+        sequelize.query(`
+            SELECT email
+            FROM users
+            WHERE email = '${email}'
+        `)
+        .then((dbRes) => {
+           res.status(200).send(dbRes[0])
+        })
+        .catch((err) => console.log(err))
     }
 }
+
+
+// let email = req.params.email
+// const emailExists = await User.findOne({ where: { email: email } });
+// if (emailExists ) {
+//     res.json("Email already registered")
+// }

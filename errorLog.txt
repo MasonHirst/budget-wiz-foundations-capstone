@@ -1,0 +1,8 @@
+The function to check emails works, but if you add extra characters at the end it says it taken also.
+ex. 'jack@gmail.com' already exists in the database as an email, so if I try and enter 'jack@gmail.com', 
+it gives me an error. However, I input 'jack@gmail.com123123' also gives me an error, since 'jack@gmail.com' 
+is contained in the entered email still.
+Actually it says every input is already taken.
+
+
+
