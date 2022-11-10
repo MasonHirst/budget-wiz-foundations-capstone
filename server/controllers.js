@@ -50,27 +50,31 @@ module.exports = {
     },
 
     checkEmail: (req, res) => {
-        let email = ''
-
-        for (i = 1; i < req.params.id.length; i++) {
-            email += (req.params.id[i])
-        }
-
         sequelize.query(`
             SELECT email
             FROM users
-            WHERE email = '${email}'
+            WHERE email = '${req.body.email}'
         `)
         .then((dbRes) => {
            res.status(200).send(dbRes[0])
         })
         .catch((err) => console.log(err))
+    },
+
+    checkLogin: (req, res) => {
+        const {email, password} = req.body
+
+        sequelize.query(`
+            SELECT password
+            FROM users
+            WHERE email = '${email}'
+        `)
+        .then((dbRes) => {
+            console.log(dbRes[0][0].password)
+            if (password === dbRes[0][0].password) {
+                res.status(200).send('login credentials match database')
+            }
+        })
+        .catch((err) => res.send(err))
     }
 }
-
-
-// let email = req.params.email
-// const emailExists = await User.findOne({ where: { email: email } });
-// if (emailExists ) {
-//     res.json("Email already registered")
-// }

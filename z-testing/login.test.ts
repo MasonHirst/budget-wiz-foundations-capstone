@@ -8,13 +8,13 @@ beforeEach(async () => {
     driver.get('http://localhost:3999/')
 })
 
-afterAll(async () => {
-    await driver.sleep(1000)
-    driver.quit()
-})
+// afterAll(async () => {
+//     await driver.sleep(1000)
+//     driver.quit()
+// })
 
 
-test('4 additional console logs should appear in chrome when create Account criteria in met', async () => {
+test('4 additional console logs should appear in chrome when create Account criteria is met', async () => {
     await driver.sleep(1000)
 
     await driver.findElement(By.id('new-user-btn')).click()

@@ -3,6 +3,13 @@ ex. 'jack@gmail.com' already exists in the database as an email, so if I try and
 it gives me an error. However, I input 'jack@gmail.com123123' also gives me an error, since 'jack@gmail.com' 
 is contained in the entered email still.
 Actually it says every input is already taken.
+------------solved------------
+
+
+My method for searching the database for an email uses a for loop to get rid of the ':'. There should be a better way
+
+
+How do I keep the user acc_id in the system while a user is logged in?
 
 
 

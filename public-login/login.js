@@ -6,24 +6,28 @@ let createAccpassword2 = document.querySelector("#password-create-input2");
 let createAccName = document.querySelector("#createAcc-names-input");
 let NewUserBtn = document.querySelector("#new-user-btn");
 let createAccDiv = document.querySelector('#createAcc-div-parent')
+let loginEmailInput = document.querySelector('#email-login-input')
+let loginPasswordInput = document.querySelector('#password-login-input')
+let loginSubmit = document.querySelector('#login-form')
 
 
 
-createAccEmailInput.addEventListener('focus', (event) => {
-    event.target.style.background = 'aqua'
-})
+// createAccEmailInput.addEventListener('focus', (event) => {
+//     event.target.style.background = 'aqua'
+// })
 
 let emailAvailable = false
-
+// This event listener fires a function when focus is taken off the email input box, and checks the database
+// to see if that email is available
 createAccEmailInput.addEventListener('blur', (event) => {
     event.target.style.background = ''
-    axios.get('/checkemail/:' + createAccEmailInput.value.toLowerCase())
+    axios.post('/checkemail', {email: createAccEmailInput.value.toLowerCase()})
     .then((res) => {
         console.log(res.data)
 
         if (res.data.length === 0) {
             emailAvailable = true
-            event.target.style.background = ''
+            event.target.style.background = 'lightgreen'
         } else {
             // alert('That email is already taken!')
             event.target.style.background = 'red'
@@ -35,6 +39,31 @@ createAccEmailInput.addEventListener('blur', (event) => {
     }) 
 })
 
+
+
+function login(event) {
+    event.preventDefault()
+
+    axios.post('/loginattempt', {email: loginEmailInput.value.toLowerCase(), password: loginPasswordInput.value})
+    .then((res) => {
+        console.log(res.data)
+
+        if (res.data === 'login credentials match database') {
+            loginSubmit.classList.add('no-display')
+            createAccDiv.classList.remove('display')
+            createAccDiv.classList.add('no-display')
+            NewUserBtn.classList.add('no-display')
+            
+        } else {
+            console.log('login credentials do not match database')
+            alert('Email or password does not match')
+        }
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+loginSubmit.addEventListener('submit', login)
 
 
 // This function uses if statements to check each input of the createAcc form. If the passwords 
@@ -59,7 +88,8 @@ function createAccount(event) {
                     if (emailAvailable === true) {
                         axios.post('/createaccount', {email: createAccEmailInput.value.toLowerCase(), name: createAccName.value, password: createAccpassword1.value})
                         .then((res) => {
-                            console.log(res)
+                            console.log(res.data)
+                            createAccDiv.classList.remove('display')
                         })
                         .catch((err) => {
                             console.log('There was a big doo doo with the post request')
@@ -94,17 +124,17 @@ createAccBtn.addEventListener("click", createAccount);
 
 
 
-
-function createAccAppear(event) {
+// this function displays the createAccDiv when the 'New User' button is clicked
+NewUserBtn.addEventListener("click", (event) => {
     event.preventDefault()
-
     createAccDiv.classList.add('display')
+})
 
-}
-NewUserBtn.addEventListener("click", createAccAppear);
-
-
-
+// this function hides the createAccDiv when the 'cancel' button is clicked
+cancelAccBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+    createAccDiv.classList.remove('display')
+})
 
 
 
