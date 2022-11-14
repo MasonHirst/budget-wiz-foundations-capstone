@@ -10,6 +10,10 @@ let loginEmailInput = document.querySelector('#email-login-input')
 let loginPasswordInput = document.querySelector('#password-login-input')
 let loginSubmit = document.querySelector('#login-form')
 let loggedInDiv = document.querySelector('#logged-in-page')
+let loginHTML = document.querySelector('#login-html-page')
+let budgetSelect = document.querySelector('#budget-select')
+
+
 
 
 let emailAvailable = false
@@ -46,12 +50,10 @@ function login(event) {
         console.log(res.data)
 
         if (res.data === 'login credentials match database') {
-            loginSubmit.classList.add('no-display')
-            createAccDiv.classList.remove('display')
-            createAccDiv.classList.add('no-display')
-            NewUserBtn.classList.add('no-display')
-
+            loginHTML.classList.add('no-display')
             loggedInDiv.classList.remove('no-display')
+
+            displayBudgets()
             
         } else {
             console.log('login credentials do not match database')

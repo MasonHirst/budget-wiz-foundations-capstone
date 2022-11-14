@@ -28,7 +28,7 @@ CREATE TABLE USERS (
 
   CREATE TABLE expenses (
   expenses_id SERIAL PRIMARY KEY,
-  category_id int REFERENCES budget_categories(category_id),
+  category_id int REFERENCES budget_categories(category_id) NOT NULL,
   name VARCHAR(255) NOT NULL,
   amount DECIMAL NOT NULL,
   note VARCHAR(500)
@@ -63,7 +63,7 @@ INSERT INTO budget_categories (budget_id, category_name, category_budget)
     (4, 'food', 85),
     (4, 'costumes', 150);
 
-INSERT INTO incomes (category_id, name, amount, note)
+INSERT INTO expenses (category_id, name, amount, note)
     VALUES (1, 'bought milk', 6.57, ''),
     (1, 'cookies', 12.00, 'need cookies with the milk'),
     (2, 'december rent', 500, 'paid rent for december'),
@@ -73,5 +73,17 @@ INSERT INTO incomes (category_id, name, amount, note)
     (6, 'went to greece', 1200.57, 'Plane tickets to greece'),
     (7, 'got bread for the party', 21, ''),
     (8, 'batman costume', 34, 'gotta look cool');
+    
+INSERT INTO incomes (category_id, name, amount, note)
+    VALUES (1, 'paycheck', 1200, 'payday baby'),
+    (2, 'paycheck', 2000, ''),
+    (2, 'sold bike', 500, 'sad to see it go'),
+    (3, 'payday', 4000, ''),
+    (4, 'paycheck', 3450, ''),
+    (5, 'car', 5404, 'sold the minivan'),
+    (6, 'payday', 1330, ''),
+    (7, 'bounty for grogu', 250000, ''),
+    (8, 'payday', 9100, 'i get paid alot');
+
 
 SELECT * FROM users

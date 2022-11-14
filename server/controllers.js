@@ -13,6 +13,11 @@ const sequelize = new Sequelize(process.env.HEROKU_DB_URI, {
     }
 })
 
+
+
+let acc_id_session = undefined
+
+
 module.exports = {
     //write functions here that go with different end points
     loginHTML: (req, res) => {
@@ -35,9 +40,40 @@ module.exports = {
         res.sendFile(path.join(__dirname, '../reset.css'))
     },
 
-    getAllBudgets: (req, res) => {
-        
+
+    getBudget: (req, res) => {
+        let { budgetName } = req.body
+        console.log('controller getBudget ran')
+
+        sequelize.query(`
+            SELECT b.name
+            FROM budgets as b
+            WHERE name = '${budgetName}'
+        `)
+        .then((dbRes) => {
+            console.log(dbRes[0])
+            res.status(200).send(dbRes[0])
+        })
+        .catch((err) => (
+            console.log('error in the controller getBudget function')
+        ))
     },
+
+
+    getAllBudgets: (req, res) => {
+        sequelize.query(`
+            SELECT * FROM budgets
+            WHERE user_id = ${acc_id_session}
+        `)
+        .then((dbRes) => {
+            console.log(dbRes[0])
+            res.send(dbRes[0])
+        })
+        .catch((err) => {
+            res.status(500).send(err)
+        })
+    },
+
 
     createAcc: (req, res) => {
         let { email, name, password } = req.body
@@ -53,6 +89,7 @@ module.exports = {
         })
     },
 
+
     checkEmail: (req, res) => {
         sequelize.query(`
             SELECT email
@@ -65,11 +102,12 @@ module.exports = {
         .catch((err) => console.log(err))
     },
 
+
     checkLogin: (req, res) => {
         const {email, password} = req.body
 
         sequelize.query(`
-            SELECT password
+            SELECT password, acc_id
             FROM users
             WHERE email = '${email}'
         `)
@@ -77,6 +115,8 @@ module.exports = {
             console.log(dbRes[0][0].password)
             if (password === dbRes[0][0].password) {
                 res.status(200).send('login credentials match database')
+                acc_id_session = dbRes[0][0].acc_id
+                // console.log(acc_id_session)
             }
         })
         .catch((err) => res.send(err))

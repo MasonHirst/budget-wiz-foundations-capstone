@@ -14,42 +14,43 @@
     When the user logs in with correct credentials, it hides the forms and their buttons, and displays the correct forms 
     for the logged in user to interact with -->
 
-    <form id="login-form">
-        <!-- <label for="email">Email</label> -->
-        <input name="email" type="text" id="email-login-input" placeholder="email">
+    <div id="login-html-page">
+        <form id="login-form">
+            <!-- <label for="email">Email</label> -->
+            <input name="email" type="text" id="email-login-input" placeholder="email">
 
-        <!-- <label for="password">Password</label> -->
-        <input name="password" type="password" id="password-login-input" placeholder="password">
+            <!-- <label for="password">Password</label> -->
+            <input name="password" type="password" id="password-login-input" placeholder="password">
 
-        <button id="login-btn" type="submit">Login</button>
-    </form>
-    
+            <button id="login-btn" type="submit">Login</button>
+        </form>
+        
 
-    <button id="new-user-btn">New User</button>
+        <button id="new-user-btn">New User</button>
 
-    <div id="createAcc-div-parent" class="no-display">
-        <div id="createAcc-div">
-            <form id="createAcc-form">
-                <label for="email">Email</label>
-                <input name="email" id="email-create-input" type="email" placeholder="Enter a valid email">
+        <div id="createAcc-div-parent" class="no-display">
+            <div id="createAcc-div">
+                <form id="createAcc-form">
+                    <label for="email">Email</label>
+                    <input name="email" id="email-create-input" type="email" placeholder="Enter a valid email">
 
-                <label for="names">Name(s)</label>
-                <input name="names" id="createAcc-names-input" type="text" placeholder="Ex: 'Jack and Jill'">
+                    <label for="names">Name(s)</label>
+                    <input name="names" id="createAcc-names-input" type="text" placeholder="Ex: 'Jack and Jill'">
 
-                <label for="password">Password</label>
-                <input name="password" id="password-create-input" type="password" placeholder="At least 6 characters">
+                    <label for="password">Password</label>
+                    <input name="password" id="password-create-input" type="password" placeholder="At least 6 characters">
 
-                <label for="password2">Re-enter password</label>
-                <input name="password2" id="password-create-input2" type="password" placeholder="Passwords must match">
-            </form>
+                    <label for="password2">Re-enter password</label>
+                    <input name="password2" id="password-create-input2" type="password" placeholder="Passwords must match">
+                </form>
 
-            <div id="createAcc-btns-div">
-                <button id="createAcc-close-btn">Cancel</button>
-                <button id="createAcc-btn">Create Account</button>
+                <div id="createAcc-btns-div">
+                    <button id="createAcc-close-btn">Cancel</button>
+                    <button id="createAcc-btn">Create Account</button>
+                </div>
             </div>
         </div>
     </div>
-
 
 
 
@@ -65,6 +66,13 @@
         </section>
 
 
+        <div id="budget-display">
+            <select onchange="getBudget()" id="budget-select">
+                <option>Select Budget</option>
+    
+            </select>
+
+        </div>
 
 
     </div>
