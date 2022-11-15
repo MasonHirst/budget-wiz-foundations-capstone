@@ -36,22 +36,26 @@ let emailAvailable = false
 createAccEmailInput.addEventListener('blur', (event) => {
     event.target.style.background = ''
     
-    axios.post('/checkemail', {email: createAccEmailInput.value.toLowerCase()})
-    .then((res) => {
-        console.log(res.data)
+    if (hasApostrophe(createAccEmailInput.value) === false) {
+        axios.post('/checkemail', {email: createAccEmailInput.value.toLowerCase()})
+        .then((res) => {
+            console.log(res.data)
 
-        if (res.data.length === 0) {
-            emailAvailable = true
-            event.target.style.background = 'lightgreen'
-        } else {
-            // alert('That email is already taken!')
-            event.target.style.background = 'red'
-        }
-    })
-    .catch((err) => {
-        console.log('auto email checker did not work :(')
-        console.log(err)
-    }) 
+            if (res.data.length === 0) {
+                emailAvailable = true
+                event.target.style.background = 'lightgreen'
+            } else {
+                // alert('That email is already taken!')
+                event.target.style.background = 'red'
+            }
+        })
+        .catch((err) => {
+            console.log('auto email checker did not work :(')
+            console.log(err)
+        })
+    } else {
+        alert('Email cannot have an apostrophe, comma , or quotes')
+    }
 })
 
 
@@ -88,11 +92,32 @@ loginSubmit.addEventListener('submit', login)
 // This function uses if statements to check each input of the createAcc form. If the passwords 
 // don't match, if won't get to the password length checker, and so on. It only send the axios.post
 // request if all the if statements are passed.
-function createAccount(event) {
-  event.preventDefault()
+function checkApostrophe(event) {
+    event.preventDefault()
+    if (hasApostrophe(createAccpassword1.value) === true) {
+        alert('password cannot have apostrophes, quotes, or commas')
+        return true
+    }
+    if (hasApostrophe(createAccName.value) === true) {
+        alert('Name(s) cannot have apostrophes, quotes, or commas')
+        return true
+    }
+    if (hasApostrophe(createAccEmailInput.value) === true) {
+        alert('Email cannot have apostrophes, quotes, or commas')
+        return true
+    }
+
+    createAccount()
+}
+createAccBtn.addEventListener("click", checkApostrophe);
+
+
+function createAccount() {
 
   console.log("-----------------------------------------")
   console.log("createAccount function started");
+
+    
 
     if (createAccpassword1.value === createAccpassword2.value) {
         console.log("passwords match")
@@ -140,7 +165,7 @@ function createAccount(event) {
         alert("Passwords do not match!");
         }
 }
-createAccBtn.addEventListener("click", createAccount);
+
 
 
 
