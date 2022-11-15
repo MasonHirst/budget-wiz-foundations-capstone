@@ -70,17 +70,20 @@ function getBudget() {
 function checkBudgetName(event) {
     event.preventDefault()
 
-    if (hasApostrophe(createBudgetInput.value) === false)
-    axios.post('/checkBudgetName', {name: createBudgetInput.value})
-    .then((res) => {
-        console.log(res.data)
-        if (res.data.length === 0) {
-            createBudget()
-        } else {
-            alert('You already have a budget with that name!')
-        }
-    })
-    .catch(err => console.log('checkBudgetName function didnt work' + err))
+    if (hasApostrophe(createBudgetInput.value) === false) {
+        axios.post('/checkBudgetName', {name: createBudgetInput.value})
+        .then((res) => {
+            console.log(res.data)
+            if (res.data.length === 0) {
+                createBudget()
+            } else {
+                alert('You already have a budget with that name!')
+            }
+        })
+        .catch(err => console.log('checkBudgetName function didnt work' + err))
+    } else {
+        alert('Budget name cannot an apostrophe, comma, or quotes')
+    }
 }
 document.querySelector('#create-budget-form').addEventListener('submit', checkBudgetName)
 
