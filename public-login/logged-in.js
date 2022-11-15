@@ -1,23 +1,33 @@
 
 
 
+function welcome() {
+    axios.get('/welcomeMessage')
+    .then((res) => {
+        welcomeMessage.innerHTML = `Welcome, ${res.data.acc_name}`
+    })
+    .catch(err => console.log('welcome function didn\'t work', err))
+}
+
+
+
+
 
 function displayBudgets() {
     budgetSelect.innerHTML = ''
     axios.get('/allbudgets')
     .then((res) => {
-        console.log('bleh' + res.data)
-        welcomeMessage.innerHTML = `Welcome, ${res.data.name}`
-
+        
         let baseOption = document.createElement('option')
         baseOption.textContent = 'Select Budget'
         budgetSelect.appendChild(baseOption)
-
+        
         for (i = 0; i < res.data.length; i++) {
             let newOption = document.createElement('option')
             newOption.textContent = res.data[i].name
             budgetSelect.appendChild(newOption)
         }
+
     })
     .catch((err) => {
         console.log(err)
@@ -33,14 +43,19 @@ let budgetCategoryList = document.querySelector('#budget_categories_list')
 function getBudget() {
     axios.post('/getBudget', {budgetName: budgetSelect.value})
     .then((res) => {
-        console.log(res.data)
 
         budgetCategoryList.innerHTML = ''
 
-        for (i = 0; i < res.data.length; i++) {
+        if (res.data.length > 0) {
+            for (i = 0; i < res.data.length; i++) {
+                let newListItem = document.createElement('li')
+                newListItem.textContent = res.data[i].category_budget + ' - ' + res.data[i].category_name
+                budgetCategoryList.appendChild(newListItem)
+            }
+        } else {
             let newListItem = document.createElement('li')
-            newListItem.textContent = res.data[i].category_budget + ' - ' + res.data[i].category_name
-            budgetCategoryList.appendChild(newListItem)
+                newListItem.textContent = 'There are no categories in this budget yet!'
+                budgetCategoryList.appendChild(newListItem)
         }
 
     })
@@ -54,6 +69,8 @@ function getBudget() {
 
 function checkBudgetName(event) {
     event.preventDefault()
+
+    if (hasApostrophe(createBudgetInput.value) === false)
     axios.post('/checkBudgetName', {name: createBudgetInput.value})
     .then((res) => {
         console.log(res.data)
@@ -89,7 +106,3 @@ function createBudget() {
 
 
 
-
-
-
-console.log('hola papi')

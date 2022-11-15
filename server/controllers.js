@@ -61,14 +61,24 @@ module.exports = {
     },
 
 
+    welcomeMessage: (req, res) => {
+        sequelize.query(`
+            SELECT acc_name FROM users
+            WHERE acc_id = ${acc_id_session}
+        `)
+        .then(dbRes => res.status(200).send(dbRes[0][0]))
+    },
+
+
     getAllBudgets: (req, res) => {
         sequelize.query(`
-            SELECT * FROM budgets
-            WHERE user_id = ${acc_id_session}
+        SELECT * FROM budgets AS b
+        JOIN users AS u ON u.acc_id = b.user_id
+        WHERE user_id = ${acc_id_session}
         `)
         .then((dbRes) => {
             console.log(dbRes[0])
-            res.send(dbRes[0])
+            res.status(200).send(dbRes[0])
         })
         .catch((err) => {
             res.status(500).send(err)

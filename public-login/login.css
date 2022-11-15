@@ -66,16 +66,16 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 8%;
-    padding-right: 8%;
+    padding-left: 6%;
+    padding-right: 6%;
 }
 
 nav {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    width: 40%;
-    background-color: black;
+    width: 45%;
+    /* background-color: black; */
 }
 
 a {

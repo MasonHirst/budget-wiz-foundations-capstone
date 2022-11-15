@@ -18,12 +18,24 @@ let welcomeMessage = document.querySelector(('#welcome-message'))
 
 
 
+function hasApostrophe(str) {
+    for (i = 0; i < str.length; i++) {
+        if (str[i] === "'" || str[i] === '"' || str[i] === ',') {
+            return true
+        }
+    }
+    return false
+}
+
+
+
 
 let emailAvailable = false
 // This event listener fires a function when focus is taken off the email input box, and checks the database
 // to see if that email is available
 createAccEmailInput.addEventListener('blur', (event) => {
     event.target.style.background = ''
+    
     axios.post('/checkemail', {email: createAccEmailInput.value.toLowerCase()})
     .then((res) => {
         console.log(res.data)
@@ -50,12 +62,12 @@ function login(event) {
 
     axios.post('/loginattempt', {email: loginEmailInput.value.toLowerCase(), password: loginPasswordInput.value})
     .then((res) => {
-        console.log(res.data)
 
         if (res.data === 'login credentials match database') {
             loginHTML.classList.add('no-display')
             loggedInDiv.classList.remove('no-display')
 
+            welcome()
             displayBudgets()
             
         } else {
@@ -68,6 +80,8 @@ function login(event) {
     })
 }
 loginSubmit.addEventListener('submit', login)
+
+
 
 
 
@@ -94,7 +108,7 @@ function createAccount(event) {
                         axios.post('/createaccount', {email: createAccEmailInput.value.toLowerCase(), name: createAccName.value, password: createAccpassword1.value})
                         .then((res) => {
                             console.log(res.data)
-                            createAccDiv.classList.remove('display')
+                            createAccDiv.classList.add('no-display')
                         })
                         .catch((err) => {
                             console.log('There was a big doo doo with the post request')
@@ -110,15 +124,16 @@ function createAccount(event) {
                     }
                 } else {
                     console.log("No account name was entered");
-                    alert("You need to enter your account name(s)!");
+                    alert("Your account name is not long enough, or has an apostrophe");
                     }
             } else {
                 console.log("password is not long enough");
-                alert("Password is not long enough");
+                alert("Password is not long enough, or has an apostrophe");
                 }
         } else {
             console.log('email is not long enough')
-            alert('Email is not long enough')
+            console.log(hasApostrophe(createAccEmailInput.value))
+            alert('Email is not long enough, or has an apostrophe')
             } 
     } else {
         console.log("Passwords do not match");
@@ -143,5 +158,3 @@ cancelAccBtn.addEventListener('click', (event) => {
 
 
 
-
-console.log("hello there");
