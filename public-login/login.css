@@ -25,12 +25,7 @@ label, input {
 
 
 
-
-.display {
-    display: block;
-}
-
-#budget-display {
+.budget-display {
     margin-left: 35%;
     width: 400px;
     background-color: aqua;

@@ -64,7 +64,7 @@ module.exports = {
     welcomeMessage: (req, res) => {
         sequelize.query(`
             SELECT acc_name FROM users
-            WHERE acc_id = ${acc_id_session}
+            WHERE acc_id = ${acc_id_session};
         `)
         .then(dbRes => res.status(200).send(dbRes[0][0]))
     },
@@ -75,6 +75,7 @@ module.exports = {
         SELECT * FROM budgets AS b
         JOIN users AS u ON u.acc_id = b.user_id
         WHERE user_id = ${acc_id_session}
+        ORDER BY budget_id DESC;
         `)
         .then((dbRes) => {
             console.log(dbRes[0])
@@ -105,7 +106,7 @@ module.exports = {
         sequelize.query(`
             SELECT email
             FROM users
-            WHERE email = '${req.body.email}'
+            WHERE email = '${req.body.email}';
         `)
         .then((dbRes) => {
            res.status(200).send(dbRes[0])
@@ -139,7 +140,7 @@ module.exports = {
 
         sequelize.query(`
         INSERT INTO budgets (name, user_id)
-        VALUES ('${name}', ${acc_id_session})
+        VALUES ('${name}', ${acc_id_session});
         `)
         .then(dbRes => {
             console.log(dbRes[0])
@@ -151,7 +152,7 @@ module.exports = {
         sequelize.query(`
             SELECT name
             FROM budgets
-            WHERE name = '${req.body.name}' AND user_id = ${acc_id_session}
+            WHERE name = '${req.body.name}' AND user_id = ${acc_id_session};
         `)
         .then((dbRes) => {
             console.log(dbRes[0])

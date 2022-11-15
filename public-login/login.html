@@ -60,14 +60,14 @@
         <header>
             <h1 id="welcome-message"></h1>
             <nav id="logged-in-nav-bar">
-                <a>Create New Budget</a>
-                <a>See Budgets</a>
-                <a>Log Spending</a>
+                <a id="new-budget-view">Create New Budget</a>
+                <a id="budgets-view">See Budgets</a>
+                <a id="spending-view">Log Spending</a>
             </nav>
 
         </header>
 
-            <section id="create-budget-section">
+            <section id="new-budget-display" class="no-display">
                 <form id="create-budget-form">
                     <label for="name">Enter budget name</label>
                     <input name="name" type="text" id="create-budget-input" placeholder="ex. 'November 2022 budget'">
@@ -77,9 +77,10 @@
             </section>
 
 
-            <div id="budget-display">
+
+
+            <div id="budget-display" class="no-display budget-display">
                 <select onchange="getBudget()" id="budget-select">
-                    <option>Select Budget</option>
         
                 </select>
 
@@ -93,13 +94,34 @@
             </div>
 
 
-            <div id="submit-expense-or-income">
-                
+
+
+            <div id="spending-display" class="no-display">
+                <select id="budget-select-expense-income"></select>
+
+                <select id="select-expense-income">
+                    <option>Expense</option>
+                    <option>Income</option>
+                </select>
+
+                <form id="expense-income-form">
+                    <input name="name" placeholder="Name (ex. bananas)" id="expense-income-name-input">
+                    <input name="amount" placeholder="Amount" id="expense-income-amount-input">
+                    <textarea name="note" placeholder="(Optional) Note (ex. needed bananas for the potluck)" id="expense-income-note-input" rows="5" cols="33"></textarea>
+                </form>
 
             </div>
 
 
     </div>
+
+
+
+    <article id="greeting-message-article" class="no-display">
+        <h1 class="greeting-message"></h1>
+        <p>Click an option above to get started!</p>
+    </article>
+    
 
 
 

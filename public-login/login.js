@@ -13,7 +13,14 @@ let loggedInDiv = document.querySelector('#logged-in-page')
 let loginHTML = document.querySelector('#login-html-page')
 let budgetSelect = document.querySelector('#budget-select')
 let createBudgetInput = document.querySelector('#create-budget-input')
-let welcomeMessage = document.querySelector(('#welcome-message'))
+let welcomeMessage = document.querySelector('#welcome-message')
+let logBudgetSelect = document.querySelector('#budget-select-expense-income')
+let budgetDisplay = document.querySelector('#budget-display')
+let newBudgetDisplay = document.querySelector('#new-budget-display')
+let spendingDisplay = document.querySelector('#spending-display')
+let greetingMessage = document.querySelector('.greeting-message')
+let greetingMessageArticle = document.querySelector('#greeting-message-article')
+
 
 
 
@@ -70,6 +77,7 @@ function login(event) {
         if (res.data === 'login credentials match database') {
             loginHTML.classList.add('no-display')
             loggedInDiv.classList.remove('no-display')
+            greetingMessageArticle.classList.remove('no-display')
 
             welcome()
             displayBudgets()
@@ -149,16 +157,16 @@ function createAccount() {
                     }
                 } else {
                     console.log("No account name was entered");
-                    alert("Your account name is not long enough, or has an apostrophe");
+                    alert("Your account name is not long enough");
                     }
             } else {
                 console.log("password is not long enough");
-                alert("Password is not long enough, or has an apostrophe");
+                alert("Password is not long enough");
                 }
         } else {
             console.log('email is not long enough')
             console.log(hasApostrophe(createAccEmailInput.value))
-            alert('Email is not long enough, or has an apostrophe')
+            alert('Email is not long enough')
             } 
     } else {
         console.log("Passwords do not match");
