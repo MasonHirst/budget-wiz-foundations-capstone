@@ -56,26 +56,45 @@
 
     <!-- The following sections are only displayed when the user logs in successfully -->
     <div id="logged-in-page" class="no-display">
-        <section id="create-budget-section">
-            <form id="create-budget-form">
-                <label for="name">Enter budget name</label>
-                <input name="name" type="text" id="" placeholder="ex. 'November 2022 budget'">
 
-                <button type="submit" id="create-budget-form-submit">Create Budget</button>
-            </form>
-        </section>
+        <header>
+            <h1 id="welcome-message"></h1>
+            <nav id="logged-in-nav-bar">
+                <a>Create New Budget</a>
+                <a>See Budgets</a>
+                <a>Log Spending</a>
+            </nav>
+
+        </header>
+
+            <section id="create-budget-section">
+                <form id="create-budget-form">
+                    <label for="name">Enter budget name</label>
+                    <input name="name" type="text" id="create-budget-input" placeholder="ex. 'November 2022 budget'">
+
+                    <button type="submit" id="create-budget-form-submit">Create Budget</button>
+                </form>
+            </section>
 
 
-        <div id="budget-display">
-            <select onchange="getBudget()" id="budget-select">
-                <option>Select Budget</option>
-    
-            </select>
+            <div id="budget-display">
+                <select onchange="getBudget()" id="budget-select">
+                    <option>Select Budget</option>
+        
+                </select>
 
-        </div>
+                <div id="budget_categories_div">
+                    <ul id="budget_categories_list">
+                        
+
+                    </ul>
+                </div>
+
+            </div>
 
 
     </div>
+
 
 
 

@@ -12,6 +12,9 @@ let loginSubmit = document.querySelector('#login-form')
 let loggedInDiv = document.querySelector('#logged-in-page')
 let loginHTML = document.querySelector('#login-html-page')
 let budgetSelect = document.querySelector('#budget-select')
+let createBudgetInput = document.querySelector('#create-budget-input')
+let welcomeMessage = document.querySelector(('#welcome-message'))
+
 
 
 
@@ -129,13 +132,13 @@ createAccBtn.addEventListener("click", createAccount);
 // this function displays the createAccDiv when the 'New User' button is clicked
 NewUserBtn.addEventListener("click", (event) => {
     event.preventDefault()
-    createAccDiv.classList.add('display')
+    createAccDiv.classList.remove('no-display')
 })
 
 // this function hides the createAccDiv when the 'cancel' button is clicked
 cancelAccBtn.addEventListener('click', (event) => {
     event.preventDefault()
-    createAccDiv.classList.remove('display')
+    createAccDiv.classList.add('no-display')
 })
 
 
