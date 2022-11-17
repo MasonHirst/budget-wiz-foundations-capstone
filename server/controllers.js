@@ -144,6 +144,7 @@ module.exports = {
         `)
         .then(dbRes => {
             console.log(dbRes[0])
+            res.send('all good')
         })
     },
 
@@ -159,5 +160,67 @@ module.exports = {
             res.status(200).send(dbRes[0])
         })
         console.log(acc_id_session)
+    },
+
+
+    getBudgetCategories: (req, res) => {
+        sequelize.query(`
+            SELECT b.name, b.budget_id, b.user_id, bc.category_name, bc.category_budget
+            FROM budgets as b
+            JOIN budget_categories as bc ON b.budget_id = bc.budget_id
+            WHERE name = '${req.body.budget}' AND user_id = ${acc_id_session};
+        `)
+        .then((dbRes) => {
+            res.status(200).send(dbRes[0])
+        })
+        .catch((err) => {
+            console.log(err)
+            res.status(500).send(err)
+        })
+
+    },
+
+
+    submitSpendingForm: (req, res) => {
+        console.log(req.body)
+        let { budget, budgetCategory, spendingType, spendingName, amount, spendingNote, categoryId } = req.body
+
+            console.log(spendingType)
+
+        if (spendingType === 'Expense') {
+            sequelize.query(`
+                INSERT INTO expenses (category_id, name, amount, note)
+                VALUES (${categoryId}, '${spendingName}', ${amount}, '${spendingNote}');
+            `)
+            .then((Dbres) => {
+                res.send('spending inserted succesfully into database')
+                })
+        } else {
+            sequelize.query(`
+                INSERT INTO incomes (category_id, name, amount, note)
+                VALUES (${categoryId}, '${spendingName}', ${amount}, '${spendingNote}');  
+            `)
+            .then((dbRes) => {
+                res.send('spending inserted succesfully into database')
+            })
+        }
+    },
+
+
+    getCategoryId: (req, res) => {
+        console.log(req.body.budgetName)
+        console.log(req.body.categoryName)
+
+        sequelize.query(`
+        SELECT bc.category_id, bc.category_name, b.name
+        FROM budget_categories AS bc
+        JOIN budgets AS b ON bc.budget_id = b.budget_id
+        WHERE category_name = '${req.body.categoryName}' AND name = '${req.body.budgetName}';
+        `)
+        .then((dbRes) => {
+            console.log('get category id is', dbRes[0])
+
+            res.status(200).send(dbRes[0])
+        })
     }
 }

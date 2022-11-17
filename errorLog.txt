@@ -20,4 +20,11 @@ if they know that user's acc_id
 
 
 if a user has an apostrophe (') in their input, it could mess up the database query
+-----------solved------------
 
+
+If a user tries to create a budget with the same name as another user's budget, it crashes the server
+-----------solved-----------
+
+
+If a user puts an apostrophe anywhere in the log spending form, the server crashes when they submit

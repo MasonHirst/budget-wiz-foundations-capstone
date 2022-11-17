@@ -1,5 +1,6 @@
-* {
+html * {
     box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
 }
 
 #createAcc-div {
@@ -32,7 +33,7 @@ label, input {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items:center ;
+    align-items: center;
 }
 
 #budget_categories_div {
@@ -84,6 +85,10 @@ a:hover {
 #welcome-message {
     color: white;
 }
+
+
+
+
 
 
 

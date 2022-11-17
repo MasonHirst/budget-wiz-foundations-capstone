@@ -10,7 +10,7 @@ app.use(cors())
 // End of setup lines
 
 
-const { loginHTML, loginCSS, loginJS, loggedJS, resetCSS, getAllBudgets, createAcc, checkEmail, checkLogin, getBudget, createBudget, checkBudgetName, welcomeMessage } = require('./controllers')
+const { loginHTML, loginCSS, loginJS, loggedJS, resetCSS, getAllBudgets, createAcc, checkEmail, checkLogin, getBudget, createBudget, checkBudgetName, welcomeMessage, getBudgetCategories, submitSpendingForm, getCategoryId } = require('./controllers')
 
 app.get('/', loginHTML)
 app.get('/resetcss', resetCSS)
@@ -27,6 +27,9 @@ app.post('/getBudget', getBudget)
 app.post('/createBudget', createBudget)
 app.post('/checkBudgetName', checkBudgetName)
 app.get('/welcomeMessage', welcomeMessage)
+app.post('/getBudgetCategories', getBudgetCategories)
+app.post('/submitSpendingForm', submitSpendingForm)
+app.post('/getCategoryId', getCategoryId)
 
 
 

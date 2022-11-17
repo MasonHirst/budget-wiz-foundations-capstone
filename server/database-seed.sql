@@ -14,7 +14,7 @@ CREATE TABLE USERS (
 
   CREATE TABLE budgets (
   budget_id SERIAL PRIMARY KEY,
-  name VARCHAR(255) UNIQUE NOT NULL,
+  name VARCHAR(255) NOT NULL,
   user_id int NOT NULL,
   FOREIGN KEY(user_id) REFERENCES users(acc_id)
   );

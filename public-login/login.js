@@ -20,6 +20,9 @@ let newBudgetDisplay = document.querySelector('#new-budget-display')
 let spendingDisplay = document.querySelector('#spending-display')
 let greetingMessage = document.querySelector('.greeting-message')
 let greetingMessageArticle = document.querySelector('#greeting-message-article')
+let spendingSelectCategory = document.querySelector('#category-select-expense-income')
+let spendingSubmitForm = document.querySelector('#expense-income-form')
+
 
 
 

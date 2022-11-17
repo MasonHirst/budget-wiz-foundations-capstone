@@ -47,6 +47,101 @@ function displayBudgets() {
 
 
 
+function getBudgetCategories() {
+
+    axios.post('/getBudgetCategories', {budget: logBudgetSelect.value})
+    .then((res) => {
+        spendingSelectCategory.innerHTML = ''
+        let baseOption = document.createElement('option')
+        baseOption.textContent = 'Select Category'
+        spendingSelectCategory.appendChild(baseOption)
+        
+        for (i = 0; i < res.data.length; i++) {
+            let newOption = document.createElement('option')
+            newOption.textContent = res.data[i].category_name
+            spendingSelectCategory.appendChild(newOption)
+        }
+    })
+    .catch((err) => {
+        console.log('problem with the getBudgetCategories()', err)
+    })
+}
+// Has an onchange listener in the html file ^
+
+
+
+
+// This function actually puts a new expense/income into the database under the right category_id
+function submitSpending(obj) {
+    
+    axios.post('/submitSpendingForm', obj)
+    .then((res) => {
+        alert(res.data)
+    })
+}
+
+
+
+// This function takes the object passed in by the submitHandler function, and now needs to find the category id of the desired category
+function getCategoryId(obj) {
+
+    axios.post('/getCategoryId', {budgetName: obj.budget, categoryName: obj.budgetCategory})
+    .then((res) => {
+        let newObj = {
+            budget: obj.budget,
+            budgetCategory: obj.budgetCategory,
+            spendingType: obj.spendingType,
+            spendingName: obj.spendingName,
+            amount: obj.amount,
+            spendingNote: obj.spendingNote,
+            categoryId: res.data[0].category_id
+        }
+        submitSpending(newObj)
+        // This function takes the new obj, which includes the category id from the database, and passes it to the submitSpending function
+
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+
+
+// This function handles the input fields when you hit submit on an expense/income log, and turns the info into an object
+function submitSpendingHandler(event) {
+    event.preventDefault()
+
+    let spendingType = document.querySelector('#select-expense-income')
+    let spendingName = document.querySelector('#expense-income-name-input')
+    let amount = document.querySelector('#expense-income-amount-input')
+    let spendingNote = document.querySelector('#expense-income-note-input')
+
+    if (hasApostrophe(spendingName.value) === false && hasApostrophe(amount.value) === false && hasApostrophe(spendingNote.value) === false && spendingName.value != '' && amount.value != '' && spendingSelectCategory.value != 'Select Category') {
+        let newObj = {
+            budget: logBudgetSelect.value,
+            budgetCategory: spendingSelectCategory.value,
+            spendingType: spendingType.value,
+            spendingName: spendingName.value,
+            amount: amount.value,
+            spendingNote: spendingNote.value
+        }
+
+        getCategoryId(newObj)
+        // This calls the getCategoryId function, passing in the object created from the inputs
+
+        spendingName.value = ''
+        amount.value = ''
+        spendingNote.value = ''
+    } else {
+        alert('Log name or amount or Select Category cannot be empty')
+    }
+}
+spendingSubmitForm.addEventListener('submit', submitSpendingHandler)
+
+
+
+
+
 let budgetCategoryList = document.querySelector('#budget_categories_list')
 
 function getBudget() {
@@ -103,7 +198,8 @@ document.querySelector('#create-budget-form').addEventListener('submit', checkBu
 function createBudget() {
     axios.post('/createBudget', {name: createBudgetInput.value})
     .then((res) => {
-        console.log('createBudget.then ran')
+        console.log('createBudget.then ran', res)
+        alert('New budget created!')
     })
     .catch((err) => {
         console.log('There was an error with the createBudget function' + err)
