@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Login</title>
+    <title>Budget Wiz</title>
     <link rel="stylesheet" href="/resetcss">
     <link rel="stylesheet" href="/css">
 </head>
@@ -20,18 +20,23 @@
     for the logged in user to interact with -->
 
     <div id="login-html-page">
+        <header id="login-header">
+            <h1 id="login-welcome">Welcome to Budget Wiz!</h1>
+            <img src="https://evernote.com/c/assets/templates/details/budget-planner/savemoney_subheader_image.svg?8d447c734b9ab565">
+        </header>
+
         <form id="login-form">
             <!-- <label for="email">Email</label> -->
-            <input name="email" type="text" id="email-login-input" placeholder="email">
+            <input name="email" type="text" id="email-login-input" placeholder="email" class="login-input">
 
             <!-- <label for="password">Password</label> -->
-            <input name="password" type="password" id="password-login-input" placeholder="password">
+            <input name="password" type="password" id="password-login-input" placeholder="password" class="login-input">
 
-            <button id="login-btn" type="submit">Login</button>
+            <button id="login-btn" class="button-35" type="submit">Login</button>
         </form>
         
 
-        <button id="new-user-btn">New User</button>
+        <button id="new-user-btn" class="button-35">New User</button>
 
         <div id="createAcc-div-parent" class="no-display">
             <div id="createAcc-div">
@@ -72,12 +77,12 @@
 
         </header>
 
-            <section id="new-budget-display" class="no-display">
+            <section id="new-budget-display" class="no-display new-budget">
                 <form id="create-budget-form">
-                    <label for="name">Enter budget name</label>
+                    <p>Enter Budget Name</p>
                     <input name="name" type="text" id="create-budget-input" placeholder="ex. 'November 2022 budget'">
 
-                    <button type="submit" id="create-budget-form-submit">Create Budget</button>
+                    <button class="button-35" type="submit" id="create-budget-form-submit">Create Budget</button>
                 </form>
             </section>
 
@@ -102,15 +107,17 @@
 
 
             <div id="spending-display" class="no-display">
-                <select onchange="getBudgetCategories()" id="budget-select-expense-income"></select>
+                <div id="spending-selects-div">
+                    <select onchange="getBudgetCategories()" id="budget-select-expense-income"></select>
 
-                <select id="category-select-expense-income">
-                </select>
+                    <select id="category-select-expense-income"></select>
+                    <select id="select-expense-income">
+                        <option>Expense</option>
+                        <option>Income</option>
+                    </select>
+                </div>
+                
 
-                <select id="select-expense-income">
-                    <option>Expense</option>
-                    <option>Income</option>
-                </select>
 
                 <form id="expense-income-form">
                     <input name="name" placeholder="Name (ex. bananas)" id="expense-income-name-input">
@@ -122,15 +129,15 @@
 
             </div>
 
+            <article id="greeting-message-article" class="no-display">
+                <h1 class="greeting-message"></h1>
+                <p>Click an option above to get started!</p>
+            </article>
 
     </div>
 
 
 
-    <article id="greeting-message-article" class="no-display">
-        <h1 class="greeting-message"></h1>
-        <p>Click an option above to get started!</p>
-    </article>
     
 
 

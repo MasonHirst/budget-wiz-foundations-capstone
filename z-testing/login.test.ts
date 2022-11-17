@@ -30,6 +30,7 @@ test('4 additional console logs should appear in chrome when create Account crit
     await driver.sleep(300)
 
     await driver.findElement(By.id('password-create-input2')).sendKeys('password')
+    await driver.sleep(900)
 
     await driver.findElement(By.id('createAcc-btn')).click()
     await driver.sleep(300)

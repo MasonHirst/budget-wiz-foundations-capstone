@@ -74,9 +74,11 @@ createAccEmailInput.addEventListener('blur', (event) => {
 function login(event) {
     event.preventDefault()
 
+    console.log('login function started')
     axios.post('/loginattempt', {email: loginEmailInput.value.toLowerCase(), password: loginPasswordInput.value})
     .then((res) => {
-
+        console.log('login .then reached')
+        console.log(res.data)
         if (res.data === 'login credentials match database') {
             loginHTML.classList.add('no-display')
             loggedInDiv.classList.remove('no-display')
@@ -145,6 +147,8 @@ function createAccount() {
                         .then((res) => {
                             console.log(res.data)
                             createAccDiv.classList.add('no-display')
+                            NewUserBtn.classList.remove('no-display')
+                            loginSubmit.classList.remove('no-display')
                         })
                         .catch((err) => {
                             console.log('There was a big doo doo with the post request')
@@ -184,6 +188,8 @@ function createAccount() {
 NewUserBtn.addEventListener("click", (event) => {
     event.preventDefault()
     createAccDiv.classList.remove('no-display')
+    NewUserBtn.classList.add('no-display')
+    loginSubmit.classList.add('no-display')
 })
 
 // this function hides the createAccDiv when the 'cancel' button is clicked

@@ -3,6 +3,11 @@ html * {
     font-family: 'Roboto Mono', monospace;
 }
 
+body {
+    background-color: rgb(230, 230, 230);
+}
+
+
 #createAcc-div {
     background-color: aquamarine;
     display: flex;
@@ -22,6 +27,7 @@ html * {
 label, input {
     display: block;
     width: 200px;
+    margin: 10px;
 }
 
 
@@ -84,11 +90,161 @@ a:hover {
 
 #welcome-message {
     color: white;
+    font-size: 22px;
+}
+
+
+#login-form {
+    background-color: rgb(114, 114, 114);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 275px;
+    margin-left: 35%;
+    margin-top: 130px;
+}
+
+#new-user-btn {
+    /* background-color: aquamarine; */
+    width: 15%;
+    height: 40px;
+    margin-left: 42.5%;
+    margin-top: 25px;
+}
+
+
+.login-input {
+    margin-bottom: 20px;
+    width: 85%;
+    height: 35px;
+    /* border: 2px solid black */
+}
+
+
+#login-welcome {
+    /* margin-left: 25%; */
+    color: whitesmoke;
+    font-size: 28px;
+}
+
+
+#login-header {
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 27%;
+    padding-right: 27%;
+    
+}
+
+
+img {
+    height: 50px;
+}
+
+
+
+article {
+    margin-left: 36%;
+    margin-top: 80px;
+    background-color: rgb(14, 223, 153);
+    padding: 25px;
+    display: inline-block;
+    /* color: white; */
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+
+.new-budget {
+    display: inline-block;
+    width: 25%;
+    height: 275px;
+    margin-top: 120px;
+    margin-left: 37.5%;
+    padding: 25px;
+    background-color: rgb(90, 180, 185);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 16px;
+}
+
+#create-budget-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    /* background-color: blue; */
+}
+
+#create-budget-input {
+    height: 30px;
+    width: 70%
+}
+
+
+
+#spending-display {
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 120px;
+    padding: 25px;
+    background-color: lightseagreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#spending-selects-div {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 120px;
 }
 
 
 
 
+
+/* CSS */
+.button-35 {
+  align-items: center;
+  background-color: rgb(1, 243, 163);
+  border-radius: 12px;
+  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Inter,sans-serif;
+  font-size: 1.2rem; 
+  font-weight: 700;
+  justify-content: center; 
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  border: 1.5px solid black;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 40px;
+  width: 150px;
+}
+
+.button-35:hover {
+  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
 
 
 

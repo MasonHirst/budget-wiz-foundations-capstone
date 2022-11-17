@@ -129,9 +129,14 @@ module.exports = {
                 res.status(200).send('login credentials match database')
                 acc_id_session = dbRes[0][0].acc_id
                 console.log(acc_id_session)
+            } else {
+                res.send('no match')
             }
         })
-        .catch((err) => res.send(err))
+        .catch((err) => {
+            console.log('checkLogin function went to error saddddd')
+            res.send(err)
+        })
     },
 
 
