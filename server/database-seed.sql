@@ -55,13 +55,13 @@ INSERT INTO budgets (name, user_id)
 
 INSERT INTO budget_categories (budget_id, category_name, category_budget)
     VALUES (1, 'groceries', 200.57),
-    (1, 'rent', 850),
+    (1, 'rent', 850.00),
     (2, 'food', 410.25),
     (2, 'gas', 89.00),
     (3, 'eating out', 60.01),
-    (3, 'traveling', 550),
-    (4, 'food', 85),
-    (4, 'costumes', 150);
+    (3, 'traveling', 550.00),
+    (4, 'food', 85.00),
+    (4, 'costumes', 150.00);
 
 INSERT INTO expenses (category_id, name, amount, note)
     VALUES (1, 'bought milk', 6.57, ''),
