@@ -4,8 +4,8 @@
 function welcome() {
     axios.get('/welcomeMessage')
     .then((res) => {
-        welcomeMessage.innerHTML = `Welcome, ${res.data.acc_name}`
-        greetingMessage.innerHTML = `Hey ${res.data.acc_name}!`
+        welcomeMessage.innerHTML = `Budget Wiz - ${res.data.acc_name}`
+        greetingMessage.innerHTML = `Welcome, ${res.data.acc_name}!`
     })
     .catch(err => console.log('welcome function didn\'t work', err))
 }
@@ -153,13 +153,15 @@ function getBudget() {
         if (res.data.length > 0) {
             for (i = 0; i < res.data.length; i++) {
                 let newListItem = document.createElement('li')
+                newListItem.classList.add('budget-item-list')
                 newListItem.textContent = res.data[i].category_budget + ' - ' + res.data[i].category_name
                 budgetCategoryList.appendChild(newListItem)
             }
         } else {
             let newListItem = document.createElement('li')
-                newListItem.textContent = 'There are no categories in this budget yet!'
-                budgetCategoryList.appendChild(newListItem)
+            newListItem.classList.add('budget-item-list')
+            newListItem.textContent = 'There are no categories in this budget yet!'
+            budgetCategoryList.appendChild(newListItem)
         }
 
     })
