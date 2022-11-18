@@ -1,7 +1,8 @@
 {
   "main": "server/server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "server/server.js"
   },
   "dependencies": {
     "@types/jest": "^27.0.2",
