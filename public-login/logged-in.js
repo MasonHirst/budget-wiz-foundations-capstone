@@ -76,7 +76,7 @@ function submitSpending(obj) {
     
     axios.post('/submitSpendingForm', obj)
     .then((res) => {
-        alert(res.data)
+        Swal.fire(res.data)
     })
 }
 
@@ -133,7 +133,7 @@ function submitSpendingHandler(event) {
         amount.value = ''
         spendingNote.value = ''
     } else {
-        alert('Log name or amount or Select Category cannot be empty')
+        Swal.fire('Log name or amount or Select Category cannot be empty')
     }
 }
 spendingSubmitForm.addEventListener('submit', submitSpendingHandler)
@@ -149,6 +149,7 @@ function getBudget() {
     .then((res) => {
 
         budgetCategoryList.innerHTML = ''
+        addCategoryBtn.classList.add('no-display')
 
         if (res.data.length > 0) {
             for (i = 0; i < res.data.length; i++) {
@@ -163,7 +164,7 @@ function getBudget() {
             newListItem.textContent = 'There are no categories in this budget yet!'
             budgetCategoryList.appendChild(newListItem)
         }
-
+        addCategoryBtn.classList.remove('no-display')
     })
     .catch((err) => console.log('there was an error in getBudget function' + err))
     console.log('getBudget function ran')
@@ -172,23 +173,46 @@ function getBudget() {
 
 
 
+// function to add categories to a budget
+function addCategory() {
+    addCategoryBtn.classList.add('no-display')
+
+    let newForm = document.createElement('form')
+    newForm.setAttribute('id', 'add-category-form')
+    newForm.innerHTML = `<input placeholder="New Category Name" id="new-category-input">
+                            <button type="submit" class="button-35" id="add-category-btn">+ Add Category</button>`
+    budgetCategoryDiv.appendChild(newForm)
+
+}
+addCategoryBtn.addEventListener('click', addCategory)
+
+
+
+
+// function submitCategory() {
+
+// }
+// document.querySelector('#add-category-form').addEventListener('click', submitCategory)
+
+
+
 
 function checkBudgetName(event) {
     event.preventDefault()
 
-    if (hasApostrophe(createBudgetInput.value) === false) {
+    if (hasApostrophe(createBudgetInput.value) === false && createBudgetInput.value.length > 2) {
         axios.post('/checkBudgetName', {name: createBudgetInput.value})
         .then((res) => {
             console.log(res.data)
             if (res.data.length === 0) {
-                createBudget()
+                createBudget(createBudgetInput.value)
             } else {
-                alert('You already have a budget with that name!')
+                Swal.fire('You already have a budget with that name!')
             }
         })
         .catch(err => console.log('checkBudgetName function didnt work' + err))
     } else {
-        alert('Budget name cannot an apostrophe, comma, or quotes')
+        Swal.fire('Budget name must be at least 3 character, and cannot have an apostrophe, comma, or quotes')
     }
 }
 document.querySelector('#create-budget-form').addEventListener('submit', checkBudgetName)
@@ -197,16 +221,16 @@ document.querySelector('#create-budget-form').addEventListener('submit', checkBu
 
 
 
-function createBudget() {
-    axios.post('/createBudget', {name: createBudgetInput.value})
+function createBudget(value) {
+    createBudgetInput.value = ''
+    axios.post('/createBudget', {name: value})
     .then((res) => {
         console.log('createBudget.then ran', res)
-        alert('New budget created!')
+        Swal.fire('New budget created!')
     })
     .catch((err) => {
         console.log('There was an error with the createBudget function' + err)
     })
-    createBudgetInput.value = ''
     displayBudgets()
 }
 

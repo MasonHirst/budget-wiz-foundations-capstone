@@ -22,6 +22,9 @@ let greetingMessage = document.querySelector('.greeting-message')
 let greetingMessageArticle = document.querySelector('#greeting-message-article')
 let spendingSelectCategory = document.querySelector('#category-select-expense-income')
 let spendingSubmitForm = document.querySelector('#expense-income-form')
+let addCategoryBtn = document.querySelector('#add-category-button')
+let budgetCategoryDiv = document.querySelector('#budget_categories_div')
+let addCategorySubmit = document.querySelector('#add-category-btn')
 
 
 
@@ -55,7 +58,7 @@ createAccEmailInput.addEventListener('blur', (event) => {
                 emailAvailable = true
                 event.target.style.background = 'lightgreen'
             } else {
-                // alert('That email is already taken!')
+                // Swal.fire('That email is already taken!')
                 event.target.style.background = 'red'
             }
         })
@@ -64,7 +67,7 @@ createAccEmailInput.addEventListener('blur', (event) => {
             console.log(err)
         })
     } else {
-        alert('Email cannot have an apostrophe, comma , or quotes')
+        Swal.fire('Email cannot have an apostrophe, comma , or quotes')
     }
 })
 
@@ -89,7 +92,7 @@ function login(event) {
             
         } else {
             console.log('login credentials do not match database')
-            alert('Email or password does not match')
+            Swal.fire('Email or password does not match')
         }
     })
     .catch((err) => {
@@ -108,15 +111,15 @@ loginSubmit.addEventListener('submit', login)
 function checkApostrophe(event) {
     event.preventDefault()
     if (hasApostrophe(createAccpassword1.value) === true) {
-        alert('password cannot have apostrophes, quotes, or commas')
+        Swal.fire('password cannot have apostrophes, quotes, or commas')
         return true
     }
     if (hasApostrophe(createAccName.value) === true) {
-        alert('Name(s) cannot have apostrophes, quotes, or commas')
+        Swal.fire('Name(s) cannot have apostrophes, quotes, or commas')
         return true
     }
     if (hasApostrophe(createAccEmailInput.value) === true) {
-        alert('Email cannot have apostrophes, quotes, or commas')
+        Swal.fire('Email cannot have apostrophes, quotes, or commas')
         return true
     }
 
@@ -160,24 +163,24 @@ function createAccount() {
                         console.log("A name was entered, all inputs accepted");
                     } else {
                         console.log('that email is taken')
-                        alert('That email is not available')
+                        Swal.fire('That email is not available')
                     }
                 } else {
                     console.log("No account name was entered");
-                    alert("Your account name is not long enough");
+                    Swal.fire("Your account name is not long enough");
                     }
             } else {
                 console.log("password is not long enough");
-                alert("Password is not long enough");
+                Swal.fire("Password is not long enough");
                 }
         } else {
             console.log('email is not long enough')
             console.log(hasApostrophe(createAccEmailInput.value))
-            alert('Email is not long enough')
+            Swal.fire('Email is not long enough')
             } 
     } else {
         console.log("Passwords do not match");
-        alert("Passwords do not match!");
+        Swal.fire("Passwords do not match!");
         }
 }
 
