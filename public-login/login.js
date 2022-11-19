@@ -185,7 +185,7 @@ function createAccount() {
 }
 
 
-
+//
 
 // this function displays the createAccDiv when the 'New User' button is clicked
 NewUserBtn.addEventListener("click", (event) => {
