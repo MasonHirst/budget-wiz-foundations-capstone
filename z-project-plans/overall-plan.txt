@@ -1,3 +1,5 @@
+deployed url: https://budget-wiz.herokuapp.com/
+
 I want to build a custom budgeting website for my wife and I to use with our monthly budget meetings.
 
 The app will have an account based system, so that we can login and see our own budgets and transactions. 

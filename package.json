@@ -2,7 +2,7 @@
   "main": "server/server.js",
   "scripts": {
     "test": "jest",
-    "start": "server/server.js"
+    "start": "node server/server.js"
   },
   "dependencies": {
     "@types/jest": "^27.0.2",
@@ -16,6 +16,7 @@
     "path": "^0.12.7",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
+    "react-scripts": "^5.0.1",
     "rollbar": "^2.24.0",
     "selenium": "^2.20.0",
     "selenium-webdriver": "^4.6.0",
