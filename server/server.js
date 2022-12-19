@@ -7,18 +7,33 @@ require('dotenv').config()
 app.use(express.json())
 app.use(cors())
 
-
+app.use(express.static(path.resolve(__dirname, "../build")))
 // End of setup lines
 
-
-const { loginHTML, loginCSS, loginJS, loggedJS, resetCSS, getAllBudgets, createAcc, checkEmail, checkLogin, getBudget, createBudget, checkBudgetName, welcomeMessage, getBudgetCategories, submitSpendingForm, getCategoryId } = require('./controllers')
+const {
+   loginHTML,
+   loginCSS,
+   loginJS,
+   loggedJS,
+   resetCSS,
+   getAllBudgets,
+   createAcc,
+   checkEmail,
+   checkLogin,
+   getBudget,
+   createBudget,
+   checkBudgetName,
+   welcomeMessage,
+   getBudgetCategories,
+   submitSpendingForm,
+   getCategoryId,
+} = require('./controllers')
 
 app.get('/', loginHTML)
 app.get('/resetcss', resetCSS)
 app.get('/css', loginCSS)
 app.get('/js', loginJS)
 app.get('/js2', loggedJS)
-
 
 app.get('/allbudgets', getAllBudgets)
 app.post('/createaccount', createAcc)
@@ -32,9 +47,9 @@ app.post('/getBudgetCategories', getBudgetCategories)
 app.post('/submitSpendingForm', submitSpendingForm)
 app.post('/getCategoryId', getCategoryId)
 
+app.get('/*', function (req, res) {
+   res.sendFile(path.join(__dirname, '../build', 'index.html'));
+ });
 
-
-
-
-const PORT = process.env.PORT || 3999
+const { PORT } = process.env
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
