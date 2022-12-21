@@ -1,157 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+   <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+         rel="stylesheet"
+      />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Budget Wiz</title>
+      <link rel="stylesheet" href="/resetcss" />
+      <link rel="stylesheet" href="/css" />
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Wiz</title>
-    <link rel="stylesheet" href="/resetcss">
-    <link rel="stylesheet" href="/css">
-</head>
-<body>
-    
-    <!-- This first section is the login page. The two forms below (and their buttons) are displayed initially on the webpage.
+      <link
+         rel="icon"
+         href="https://evernote.com/c/assets/templates/details/budget-planner/savemoney_subheader_image.svg?8d447c734b9ab565"
+      />
+   </head>
+   <body>
+      <!-- This first section is the login page. The two forms below (and their buttons) are displayed initially on the webpage.
     When the user logs in with correct credentials, it hides the forms and their buttons, and displays the correct forms 
     for the logged in user to interact with -->
 
-    <div id="login-html-page">
-        <header id="login-header">
+      <div id="login-html-page">
+         <header id="login-header">
             <h1 id="login-welcome">Welcome to Budget Wiz!</h1>
-            <img src="https://evernote.com/c/assets/templates/details/budget-planner/savemoney_subheader_image.svg?8d447c734b9ab565">
-        </header>
+            <img
+               src="https://evernote.com/c/assets/templates/details/budget-planner/savemoney_subheader_image.svg?8d447c734b9ab565"
+            />
+         </header>
 
-        <form id="login-form" class="login-form-div">
+         <form id="login-form" class="login-form-div">
             <!-- <label for="email">Email</label> -->
-            <input name="email" type="text" id="email-login-input" placeholder="email" class="login-input">
+            <input
+               name="email"
+               type="text"
+               id="email-login-input"
+               placeholder="email"
+               class="login-input"
+            />
 
             <!-- <label for="password">Password</label> -->
-            <input name="password" type="password" id="password-login-input" placeholder="password" class="login-input">
+            <input
+               name="password"
+               type="password"
+               id="password-login-input"
+               placeholder="password"
+               class="login-input"
+            />
 
-            <button id="login-btn" class="button-35" type="submit">Login</button>
-        </form>
-        
+            <button id="login-btn" class="button-35" type="submit">
+               Login
+            </button>
+         </form>
 
-        <button id="new-user-btn" class="button-35">New User</button>
+         <button id="new-user-btn" class="button-35">New User</button>
 
-        <div id="createAcc-div-parent" class="no-display create-acc-div">
+         <div id="createAcc-div-parent" class="no-display create-acc-div">
             <div id="createAcc-div">
-                <form id="createAcc-form">
-                    <label for="email">Email</label>
-                    <input name="email" id="email-create-input" type="email" placeholder="Enter a valid email">
+               <form id="createAcc-form">
+                  <label for="email">Email</label>
+                  <input
+                     name="email"
+                     id="email-create-input"
+                     type="email"
+                     placeholder="Enter a valid email"
+                  />
 
-                    <label for="names">Name(s)</label>
-                    <input name="names" id="createAcc-names-input" type="text" placeholder="Ex: 'Jack and Jill'">
+                  <label for="names">Name(s)</label>
+                  <input
+                     name="names"
+                     id="createAcc-names-input"
+                     type="text"
+                     placeholder="Ex: 'Jack and Jill'"
+                  />
 
-                    <label for="password">Password</label>
-                    <input name="password" id="password-create-input" type="password" placeholder="At least 6 characters">
+                  <label for="password">Password</label>
+                  <input
+                     name="password"
+                     id="password-create-input"
+                     type="password"
+                     placeholder="At least 6 characters"
+                  />
 
-                    <label for="password2">Re-enter password</label>
-                    <input name="password2" id="password-create-input2" type="password" placeholder="Passwords must match">
-                </form>
+                  <label for="password2">Re-enter password</label>
+                  <input
+                     name="password2"
+                     id="password-create-input2"
+                     type="password"
+                     placeholder="Passwords must match"
+                  />
+               </form>
 
-                <div id="createAcc-btns-div">
-                    <button id="createAcc-close-btn" class="button-35">Cancel</button>
-                    <button id="createAcc-btn" class="button-35">Create Account</button>
-                </div>
+               <div id="createAcc-btns-div">
+                  <button id="createAcc-close-btn" class="button-35">
+                     Cancel
+                  </button>
+                  <button id="createAcc-btn" class="button-35">
+                     Create Account
+                  </button>
+               </div>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
 
-
-
-    <!-- The following sections are only displayed when the user logs in successfully -->
-    <div id="logged-in-page" class="no-display">
-
-        <header>
+      <!-- The following sections are only displayed when the user logs in successfully -->
+      <div id="logged-in-page" class="no-display">
+         <header>
             <h1 id="welcome-message"></h1>
             <nav id="logged-in-nav-bar">
-                <a id="new-budget-view">Create New Budget</a>
-                <a id="budgets-view">See Budgets</a>
-                <a id="spending-view">Log Spending</a>
+               <a id="new-budget-view">Create New Budget</a>
+               <a id="budgets-view">See Budgets</a>
+               <a id="spending-view">Log Spending</a>
             </nav>
+         </header>
 
-        </header>
+         <section id="new-budget-display" class="no-display new-budget">
+            <form id="create-budget-form">
+               <p>Enter Budget Name</p>
+               <input
+                  name="name"
+                  type="text"
+                  id="create-budget-input"
+                  placeholder="ex. 'November 2022 budget'"
+               />
 
-            <section id="new-budget-display" class="no-display new-budget">
-                <form id="create-budget-form">
-                    <p>Enter Budget Name</p>
-                    <input name="name" type="text" id="create-budget-input" placeholder="ex. 'November 2022 budget'">
+               <button
+                  class="button-35"
+                  type="submit"
+                  id="create-budget-form-submit"
+               >
+                  Create Budget
+               </button>
+            </form>
+         </section>
 
-                    <button class="button-35" type="submit" id="create-budget-form-submit">Create Budget</button>
-                </form>
-            </section>
+         <div id="budget-display" class="no-display budget-display">
+            <p class="budget-display-title">Select a budget to see details</p>
 
+            <select onchange="getBudget()" id="budget-select"></select>
 
+            <div id="budget_categories_div">
+               <ul id="budget_categories_list"></ul>
+               <button
+                  id="add-category-button"
+                  class="no-display button-35 add-category-button"
+               >
+                  + Add Category
+               </button>
+            </div>
+         </div>
 
+         <div id="spending-display" class="spending-display-div no-display">
+            <div id="spending-selects-div">
+               <select
+                  onchange="getBudgetCategories()"
+                  id="budget-select-expense-income"
+               ></select>
 
-            <div id="budget-display" class="no-display budget-display">
-                <p class="budget-display-title">Select a budget to see details</p>
-
-                <select onchange="getBudget()" id="budget-select">
-        
-                </select>
-
-                <div id="budget_categories_div">
-                    <ul id="budget_categories_list">
-                        
-
-                    </ul>
-                    <button id="add-category-button" class="no-display button-35 add-category-button">+ Add Category</button>
-                </div>
-
+               <select id="category-select-expense-income">
+                  <option>Select budget first ^</option>
+               </select>
+               <select id="select-expense-income">
+                  <option>Expense</option>
+                  <option>Income</option>
+               </select>
             </div>
 
+            <p class="dotted-line"></p>
 
+            <form id="expense-income-form" class="spending-form">
+               <input
+                  name="name"
+                  placeholder="Name (ex. bananas)"
+                  id="expense-income-name-input"
+               />
+               <input
+                  name="amount"
+                  type="number"
+                  step="0.01"
+                  placeholder="Amount"
+                  id="expense-income-amount-input"
+               />
+               <input
+                  name="note"
+                  placeholder="Note (optional)"
+                  id="expense-income-note-input"
+               />
 
+               <button type="submit" id="spending-submit-btn" class="button-35">
+                  Submit
+               </button>
+            </form>
+         </div>
 
-            <div id="spending-display" class="spending-display-div no-display">
-                <div id="spending-selects-div">
-                    <select onchange="getBudgetCategories()" id="budget-select-expense-income"></select>
+         <article id="greeting-message-article" class="no-display">
+            <h1 class="greeting-message"></h1>
+            <p>Click an option above to get started!</p>
+         </article>
+      </div>
 
-                    <select id="category-select-expense-income">
-                        <option>Select budget first ^</option>
-                    </select>
-                    <select id="select-expense-income">
-                        <option>Expense</option>
-                        <option>Income</option>
-                    </select>
-                </div>
-                
-                <p class="dotted-line"></p>
-
-                <form id="expense-income-form" class="spending-form">
-                    <input name="name" placeholder="Name (ex. bananas)" id="expense-income-name-input">
-                    <input name="amount" type="number" step="0.01" placeholder="Amount" id="expense-income-amount-input">
-                    <input name="note" placeholder="Note (optional)" id="expense-income-note-input"></input>
-
-                    <button type="submit" id="spending-submit-btn" class="button-35">Submit</button>
-                </form>
-
-            </div>
-
-            <article id="greeting-message-article" class="no-display">
-                <h1 class="greeting-message"></h1>
-                <p>Click an option above to get started!</p>
-            </article>
-
-    </div>
-
-
-
-    
-
-
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js"></script>
-    <script src="/js2"></script>
-</body>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script src="/js"></script>
+      <script src="/js2"></script>
+   </body>
 </html>
