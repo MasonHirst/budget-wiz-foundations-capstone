@@ -7,7 +7,7 @@ require('dotenv').config()
 app.use(express.json())
 app.use(cors())
 
-app.use(express.static(path.resolve(__dirname, "../build")))
+// app.use(express.static(path.resolve(__dirname, "../build")))
 // End of setup lines
 
 const {
@@ -47,9 +47,9 @@ app.post('/getBudgetCategories', getBudgetCategories)
 app.post('/submitSpendingForm', submitSpendingForm)
 app.post('/getCategoryId', getCategoryId)
 
-app.get('/*', function (req, res) {
-   res.sendFile(path.join(__dirname, '../build', 'index.html'));
- });
+// app.get('/*', function (req, res) {
+//    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+//  });
 
 const { PORT } = process.env
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
